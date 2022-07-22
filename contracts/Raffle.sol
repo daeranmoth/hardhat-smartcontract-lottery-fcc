@@ -152,8 +152,8 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         uint256 indexOfWinner = randomWords[0] % s_players.length;
         address payable recentWinner = s_players[indexOfWinner];
         s_recentWinner = recentWinner;
-        s_players = new address payable[](0);
-        s_raffleState = RaffleState.OPEN;
+        s_players = new address payable[](0); //reset the players array
+        s_raffleState = RaffleState.OPEN; //reset the raffle state
         s_lastTimeStamp = block.timestamp;
         (bool success, ) = recentWinner.call{value: address(this).balance}("");
         // require(success, "Transfer failed");

@@ -30,7 +30,7 @@ developmentChains.includes(network.name)
                               // add our asserts here
                               const recentWinner = await raffle.getRecentWinner()
                               const raffleState = await raffle.getRaffleState()
-                              const winnerEndingBalance = await accounts[0].getBalance()
+                              const winnerEndingBalance = await accounts[0].getBalance() // accounts[0] is the deployer of the contract
                               const endingTimeStamp = await raffle.getLastTimeStamp()
 
                               await expect(raffle.getPlayer(0)).to.be.reverted
